@@ -160,6 +160,9 @@ venv.bak/
 # Local datasets
 data/
 
+# Test user creation script
+backend/scripts/create_test_users.py
+
 # Spyder project settings
 .spyderproject
 .spyproject
