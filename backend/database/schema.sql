@@ -100,3 +100,12 @@ CREATE TABLE appointments (
         FOREIGN KEY (clinician_id)
         REFERENCES clinicians(clinician_id)
 );
+
+CREATE TABLE users (
+    user_id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    hashed_password VARCHAR(255) NOT NULL,
+    role VARCHAR(20) NOT NULL,
+    CONSTRAINT chk_user_role
+        CHECK (role IN ('patient', 'admin'))
+);

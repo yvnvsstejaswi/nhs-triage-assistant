@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from ..database import get_database
 from ..models.patient import Patient
 from ..schemas.patient import PatientCreate, PatientResponse
-
+from ..services.dependencies import get_current_user
 
 router = APIRouter(
     prefix="/patients",
@@ -42,8 +42,10 @@ def create_patient(
 @router.get("/{patient_id}", response_model=PatientResponse)
 def get_patient(
     patient_id: int,
-    database: Session = Depends(get_database)
+    database: Session = Depends(get_database),
+    current_user = Depends(get_current_user)
 ):
+    
     patient = (
         database.query(Patient)
         .filter(Patient.patient_id == patient_id)

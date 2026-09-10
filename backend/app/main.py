@@ -6,6 +6,8 @@ from .models.patient import Patient
 from .routes import patients
 from .models.appointment import Appointment
 from .routes import appointments
+from .models.user import User
+from .routes.auth import router as auth_router
 
 app = FastAPI(
     title="Healthcare Appointment & Triage Assistant API",
@@ -16,6 +18,8 @@ app = FastAPI(
 app.include_router(patients.router)
 
 app.include_router(appointments.router)
+
+app.include_router(auth_router)
 
 @app.get("/")
 def home():
