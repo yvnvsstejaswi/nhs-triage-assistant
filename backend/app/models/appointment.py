@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text, Date, Time
+from sqlalchemy import Column, Integer, String, Date, Time, Text, ForeignKey
 
 from ..database import Base
 
@@ -13,16 +13,18 @@ class Appointment(Base):
     appointment_id = Column(
         Integer,
         primary_key=True,
-        index=True
     )
 
     patient_id = Column(
-        Integer,
+        Integer, 
+        ForeignKey("patients.patient_id"), 
         nullable=False
+
     )
 
     clinician_id = Column(
-        Integer,
+        Integer, 
+        ForeignKey("clinicians.clinician_id"), 
         nullable=False
     )
 

@@ -13,7 +13,6 @@ class Patient(Base):
     patient_id = Column(
         Integer,
         primary_key=True,
-        index=True
     )
 
     age = Column(
