@@ -1,0 +1,318 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7f8f3;
+  --foreground: #17221c;
+
+  --primary: #176b4d;
+  --primary-dark: #0f5139;
+  --primary-light: #dceee5;
+
+  --secondary: #4f8a6b;
+  --accent: #c9a45c;
+  --accent-light: #f3e8cf;
+
+  --card: #ffffff;
+  --card-soft: #fbfcf8;
+
+  --border: #e3e8e1;
+  --muted: #68756d;
+  --muted-light: #9aa59e;
+
+  --success: #238653;
+  --warning: #c58a2c;
+  --danger: #c94c4c;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+
+  --color-secondary: var(--secondary);
+
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+
+  --color-card: var(--card);
+  --color-card-soft: var(--card-soft);
+
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-muted-light: var(--muted-light);
+
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* --------------------------------
+   Base
+-------------------------------- */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* --------------------------------
+   Selection
+-------------------------------- */
+
+::selection {
+  background: #cfe5d8;
+  color: #123d2d;
+}
+
+/* --------------------------------
+   Links
+-------------------------------- */
+
+a {
+  text-decoration: none;
+}
+
+/* --------------------------------
+   Buttons
+-------------------------------- */
+
+button {
+  font-family: inherit;
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* --------------------------------
+   Forms
+-------------------------------- */
+
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #9aa59e;
+}
+
+/* --------------------------------
+   Focus
+-------------------------------- */
+
+:focus-visible {
+  outline: 2px solid #4f8a6b;
+  outline-offset: 3px;
+}
+
+/* --------------------------------
+   Images
+-------------------------------- */
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* --------------------------------
+   Scrollbar
+-------------------------------- */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #eef1ec;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #aebbb2;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7f9186;
+}
+
+/* --------------------------------
+   Animations
+-------------------------------- */
+
+@keyframes softFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes softFloatReverse {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes gentlePulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-soft-float {
+  animation: softFloat 5s ease-in-out infinite;
+}
+
+.animate-soft-float-reverse {
+  animation: softFloatReverse 6s ease-in-out infinite;
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.7s ease-out both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out both;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s ease-out both;
+}
+
+.animate-gentle-pulse {
+  animation: gentlePulse 3s ease-in-out infinite;
+}
+
+/* --------------------------------
+   Reusable healthcare card
+-------------------------------- */
+
+.health-card {
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: 1.5rem;
+
+  box-shadow:
+    0 2px 5px rgba(23, 34, 28, 0.025),
+    0 12px 35px rgba(23, 34, 28, 0.055);
+
+  transition:
+    transform 300ms ease,
+    box-shadow 300ms ease,
+    border-color 300ms ease;
+}
+
+.health-card:hover {
+  transform: translateY(-3px);
+
+  border-color: #d4dfd7;
+
+  box-shadow:
+    0 5px 10px rgba(23, 34, 28, 0.035),
+    0 18px 45px rgba(23, 34, 28, 0.08);
+}
+
+/* --------------------------------
+   Premium glass effect
+-------------------------------- */
+
+.health-glass {
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 15px 50px rgba(23, 34, 28, 0.08);
+}
+
+/* --------------------------------
+   Reduced motion
+-------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
